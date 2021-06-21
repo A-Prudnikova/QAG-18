@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 import lombok.User;
 import lombok.UserData;
 import lombok.Data;
+import lombok.Builder;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
@@ -73,7 +74,8 @@ public class RegresInTests {
                 .log().body()
                 .extract().as(lombok.UserData.class);
 
-        User user = User.builder().id(2).email("").build();
+        User user = new User();
+        user.setId(2);
 
         assertEquals(2, data.getUser().getId());
     }
